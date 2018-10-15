@@ -17,12 +17,16 @@ func New(tag string) *MediumTag {
 func parseDoc(doc *goquery.Document) []MediumRecord {
 	records := []MediumRecord{}
 	doc.Find(".streamItem").Each(func(i int, s *goquery.Selection) {
-		link := s.Find(".button--smaller").Get(0)
-		for _, element := range link.Attr {
-			if element.Key == "href" {
-				records = append(records, MediumRecord{element.Val})
+		sel := s.Find(".button--smaller")
+		if sel.Length() > 0 {
+			link := sel.Get(0)
+			for _, element := range link.Attr {
+				if element.Key == "href" {
+					records = append(records, MediumRecord{element.Val})
+				}
 			}
 		}
+
 	})
 	return records
 }

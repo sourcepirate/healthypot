@@ -9,7 +9,7 @@ type MediumRecord struct {
 }
 
 type MediumArchive struct {
-	records map[string][]MediumRecord `json:"records"`
+	Records map[string][]MediumRecord `json:"records"`
 }
 
 type MediumTag struct {
