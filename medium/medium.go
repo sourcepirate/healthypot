@@ -1,7 +1,7 @@
 package medium
 
 const (
-	MEDIUM_TAG = "https://medium.com/tag/"
+	MEDIUM_TAG = "https://medium.com/tag"
 )
 
 type MediumRecord struct {

@@ -29,10 +29,12 @@ func parseDoc(doc *goquery.Document) []MediumRecord {
 
 func FetchRecordsForYear(tag string, year string) []MediumRecord {
 	url := strings.Join([]string{MEDIUM_TAG, tag, "archive", year}, "/")
+	log.Printf("Fetching %s", url)
 	resp, err := http.Get(url)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Println(resp.StatusCode)
 	defer resp.Body.Close()
 	if resp.StatusCode != 200 {
 		log.Fatal("Non 200 code")
@@ -55,9 +57,8 @@ func (med *MediumTag) GetArchive() *MediumArchive {
 	recordMaps := make(map[string][]MediumRecord)
 	YEARS := []string{"2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018"}
 	for _, year := range YEARS {
-		log.Println("Fetching archive for year %s for tag %s", year, med.Tag)
+		log.Printf("Fetching archive for year %s for tag %s", year, med.Tag)
 		recordMaps[year] = med.fetchArchive(year)
 	}
-
 	return &MediumArchive{recordMaps}
 }
