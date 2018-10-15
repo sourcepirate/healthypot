@@ -18,4 +18,5 @@ var TAGS = [...]string{
 
 type HoneyPot interface {
 	PopulatePot(string)
+	Download()
 }
