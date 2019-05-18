@@ -1,13 +1,10 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/sourcepirate/healthypot/medium"
+	"github.com/sourcepirate/healthypot/honeypot"
 )
 
 func main() {
-	tag := medium.New("health")
-	archives := tag.GetArchive()
-	fmt.Println(archives)
+
+	honeypot.Download()
 }

@@ -1,11 +1,15 @@
 package medium
 
+const (
+	MEDIUM_TAG = "https://medium.com/tag"
+)
+
 type MediumRecord struct {
 	Url string `json:"url"`
 }
 
 type MediumArchive struct {
-	records map[string][]MediumRecords `json:"records"`
+	Records map[string][]MediumRecord `json:"records"`
 }
 
 type MediumTag struct {
